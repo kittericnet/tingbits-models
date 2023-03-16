@@ -1,0 +1,6 @@
+type Profile
+	@createModel(accountRelation: SINGLE, description: "A basic profile") {
+	version: CommitID! @documentVersion
+	name: String @string(minLength: 2, maxLength: 100)
+	description: String @string(minLength: 3, maxLength: 1000)
+}

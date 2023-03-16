@@ -1,0 +1,8 @@
+type Reply @loadModel(id: "kjzl6hvfrbw6c84z6bn89uya83qx61jwxv00itzswzzxuky8dh5l21ihf3lzixf") {
+  id: ID!
+}
+
+type Comment @loadModel(id: "kjzl6hvfrbw6c9b8rp6bojx5agip5cdfdj8bnmo5ylt1usqmzmkduexm8b2efjl"){
+  replies: [Reply] @relationFrom(model: "Reply", property: "context")
+  repliesCount: Int! @relationCountFrom(model: "Reply", property: "context")
+}

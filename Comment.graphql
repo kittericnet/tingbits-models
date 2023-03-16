@@ -1,0 +1,11 @@
+type Discussion @loadModel(id: "kjzl6hvfrbw6c64faiasddl7mdi3mpe05ela18xijloh9oi94axsj34mbch8g20"){
+    id: ID!
+}
+
+type Comment @createModel(accountRelation: LIST, description: "A simple comment") {
+    creator: DID! @documentAccount
+    version: CommitID! @documentVersion
+    content: String! @string(maxLength: 14000)
+    context: StreamID! @documentReference(model: "Discussion")
+    contextDetails: Discussion! @relationDocument(property: "context")
+}

@@ -1,0 +1,11 @@
+type Comment @loadModel(id: "kjzl6hvfrbw6c9b8rp6bojx5agip5cdfdj8bnmo5ylt1usqmzmkduexm8b2efjl") {
+  id: ID!
+}
+
+type Reply @createModel(accountRelation: LIST, description: "A reply to a comment") {
+    creator: DID! @documentAccount
+    version: CommitID! @documentVersion
+    content: String! @string(maxLength: 14000)
+    context: StreamID! @documentReference(model: "Comment")
+    contextDetails: Comment! @relationDocument(property: "context")
+}

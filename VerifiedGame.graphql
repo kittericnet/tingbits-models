@@ -1,0 +1,26 @@
+type Profile
+	@loadModel(
+		id: "kjzl6hvfrbw6ca5otca3o8hamsdblba9hflvjoxgodqoz6c98o1z9d7es9t0umx"
+	) {
+	id: ID!
+}
+
+type VerifiedGame @createModel(accountRelation: LIST, description: "Verified game") {
+  creator: DID! @documentAccount
+  version: CommitID! @documentVersion
+  contracts: [Contract] @list(maxLength: 5000)
+}
+
+type Contract {
+  chain: String! @string(maxLength: 100)
+  contractAddress: String! @string(maxLength: 250)
+  label: String! @string(maxLength: 100)
+  description: String! @string(maxLength: 1000)
+  games: [Game] @list(maxLength: 10000)
+}
+
+type Game {
+  image: String @string(maxLength: 250)
+  url: String @string(maxLength: 250)
+  label: String! @string(maxLength: 250)
+}

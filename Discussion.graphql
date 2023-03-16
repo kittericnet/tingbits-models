@@ -1,0 +1,14 @@
+type Profile
+	@loadModel(
+		id: "kjzl6hvfrbw6ca5otca3o8hamsdblba9hflvjoxgodqoz6c98o1z9d7es9t0umx"
+	) {
+	id: ID!
+}
+
+type Discussion
+	@createModel(accountRelation: LIST, description: "A simple discussion") {
+	version: CommitID! @documentVersion
+	title: String @string(maxLength: 250)
+	body: String! @string(maxLength: 14000)
+	creator: DID! @documentAccount
+}
